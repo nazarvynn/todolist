@@ -39,6 +39,12 @@ export class AppComponent implements OnInit {
         routerLink: '/gallery',
         automationId: 'gallery-page',
       },
+      {
+        label: 'About',
+        icon: 'pi pi-fw pi-compass',
+        routerLink: '/about',
+        automationId: 'about-page',
+      },
     ];
   }
 }

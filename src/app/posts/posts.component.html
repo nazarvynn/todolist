@@ -1,1 +1,36 @@
-<p>posts works!</p>
+<div class="wrapper">
+  <h1 class="title" data-cy="title">Posts</h1>
+  <main>
+    <div class="post-creation">
+      <span class="p-float-label">
+        <input pInputText id="post-title" type="text" class="w-full" [(ngModel)]="title" />
+        <label for="post-title">Title</label>
+      </span>
+      <br />
+      <br />
+      <span class="p-float-label">
+        <textarea pInputTextarea id="post-body" rows="5" cols="30" class="w-full" [(ngModel)]="body"></textarea>
+        <label for="post-body">Body</label>
+      </span>
+      <br />
+      <p-button label="Save" icon="pi pi-save" class="ml-auto" (onClick)="addPost()"></p-button>
+      <div class="posts-cnt">
+        <ng-container *ngFor="let post of posts">
+          <p-card [header]="post.title" data-cy="post">
+            {{ post.body }}
+          </p-card>
+          <br />
+        </ng-container>
+
+        <div class="pagination">
+          <p-paginator
+            data-cy="pagination"
+            [rows]="12"
+            [totalRecords]="120"
+            (onPageChange)="onPageChange($event)"
+          ></p-paginator>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

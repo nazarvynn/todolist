@@ -13,19 +13,36 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { PaginatorModule } from 'primeng/paginator';
+import { HttpClientModule } from '@angular/common/http';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { ImageModule } from 'primeng/image';
+import { ToastModule } from 'primeng/toast';
+import { CardModule } from 'primeng/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AboutComponent } from './about/about.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
     MenubarModule,
     ButtonModule,
     CheckboxModule,
     InputTextModule,
+    PaginatorModule,
+    HttpClientModule,
+    ProgressSpinnerModule,
+    ImageModule,
+    ToastModule,
+    CardModule,
+    InputTextareaModule,
   ],
-  declarations: [AppComponent, WelcomeComponent, TodoComponent, PostsComponent, GalleryComponent],
+  declarations: [AppComponent, WelcomeComponent, TodoComponent, PostsComponent, GalleryComponent, AboutComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
