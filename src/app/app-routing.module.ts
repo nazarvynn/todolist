@@ -5,10 +5,11 @@ import { TodoComponent } from 'src/app/todo/todo.component';
 import { PostsComponent } from 'src/app/posts/posts.component';
 import { GalleryComponent } from 'src/app/gallery/gallery.component';
 import { AboutComponent } from 'src/app/about/about.component';
+import { PostComponent } from 'src/app/post/post.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     pathMatch: 'full',
     component: WelcomeComponent,
   },
@@ -21,6 +22,10 @@ const routes: Routes = [
     component: PostsComponent,
   },
   {
+    path: 'posts/:id',
+    component: PostComponent,
+  },
+  {
     path: 'gallery',
     component: GalleryComponent,
   },
@@ -28,7 +33,7 @@ const routes: Routes = [
     path: 'about',
     component: AboutComponent,
   },
-  { path: '**', redirectTo: '/', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

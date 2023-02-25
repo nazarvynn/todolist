@@ -30,6 +30,15 @@
     align-items: center;
     justify-content: center;
   }
+
+  .link {
+    text-decoration: underline;
+    cursor: pointer;
+
+    :hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .buttons {

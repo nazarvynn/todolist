@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import last from 'lodash-es/last';
+import { Router } from '@angular/router';
 
 interface Post {
   id: number;
@@ -25,7 +26,7 @@ export class PostsComponent implements OnInit {
   isShownCreateModal = false;
   isShownEditModal = false;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.loadPosts(0, this.itemsPerPage);
@@ -40,6 +41,10 @@ export class PostsComponent implements OnInit {
 
   onPageChange({ page }: any): void {
     this.loadPosts(this.itemsPerPage * page, this.itemsPerPage);
+  }
+
+  showDetails(post: Post): void {
+    this.router.navigate([`/posts/${post.id}`]);
   }
 
   showCreateModal(): void {
@@ -75,6 +80,8 @@ export class PostsComponent implements OnInit {
 
   showEditModal(post: Post): void {
     this.isShownEditModal = true;
+    this.editTitle = post.title;
+    this.editBody = post.body;
     this.editPost = post;
   }
 
@@ -85,7 +92,21 @@ export class PostsComponent implements OnInit {
     this.editPost = null;
   }
 
-  updatePost(): void {}
+  updatePost(): void {
+    const { id } = this.editPost!;
+    const title = (this.editTitle || '').trim();
+    const body = (this.editBody || '').trim();
+
+    if (!title || !body) {
+      return;
+    }
+
+    const URL = `${this.getBaseUrl()}/posts/${id}`;
+    this.httpClient.patch<Post>(URL, { ...this.editPost, title, body }).subscribe((updatedPost) => {
+      this.posts = this.posts.map((p) => (p.id === updatedPost.id ? updatedPost : p));
+      this.hideEditModal();
+    });
+  }
 
   deletePost(post: Post): void {
     const URL = `${this.getBaseUrl()}/posts/${post.id}`;

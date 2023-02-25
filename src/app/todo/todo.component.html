@@ -7,19 +7,13 @@
   </div>
 
   <div class="filters">
-    <p-button label="All" styleClass="p-button-sm" data-cy="all-btn" (click)="showAll()"></p-button>
-    <p-button label="Active" styleClass="p-button-sm" data-cy="active-btn" (click)="showActive()"></p-button>
-    <p-button label="Inactive" styleClass="p-button-sm" data-cy="inactive-btn" (click)="showInactive()"></p-button>
+    <p-button label="All" styleClass="p-button-sm" data-cy="show-all-btn" (click)="showAll()"></p-button>
+    <p-button label="Active" styleClass="p-button-sm" data-cy="show-active-btn" (click)="showActive()"></p-button>
+    <p-button label="Inactive" styleClass="p-button-sm" data-cy="show-inactive-btn" (click)="showInactive()"></p-button>
   </div>
 
-  <div *ngFor="let item of filteredList" class="field-checkbox" [attr.data-cy]="'item-' + item.id">
-    <p-checkbox
-      data-cy="checkbox"
-      inputId="binary"
-      [binary]="true"
-      (onChange)="done()"
-      [(ngModel)]="item.done"
-    ></p-checkbox>
+  <div *ngFor="let item of filteredList" class="field-checkbox" data-cy="todo-item">
+    <p-checkbox inputId="binary" [binary]="true" (onChange)="done()" [(ngModel)]="item.done"></p-checkbox>
 
     <label
       *ngIf="!item.edit"

@@ -24,6 +24,7 @@ import { AboutComponent } from './about/about.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DialogModule } from 'primeng/dialog';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
     DialogModule,
     DynamicDialogModule,
   ],
-  declarations: [AppComponent, WelcomeComponent, TodoComponent, PostsComponent, GalleryComponent, AboutComponent],
+  declarations: [AppComponent, WelcomeComponent, TodoComponent, PostsComponent, GalleryComponent, AboutComponent, PostComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
