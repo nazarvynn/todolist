@@ -2,35 +2,108 @@
   <h1 class="title" data-cy="title">Posts</h1>
   <main>
     <div class="post-creation">
-      <span class="p-float-label">
-        <input pInputText id="post-title" type="text" class="w-full" [(ngModel)]="title" />
-        <label for="post-title">Title</label>
-      </span>
-      <br />
-      <br />
-      <span class="p-float-label">
-        <textarea pInputTextarea id="post-body" rows="5" cols="30" class="w-full" [(ngModel)]="body"></textarea>
-        <label for="post-body">Body</label>
-      </span>
-      <br />
-      <p-button label="Save" icon="pi pi-save" class="ml-auto" (onClick)="addPost()"></p-button>
-      <div class="posts-cnt">
+      <p-button label="Add Post" icon="pi pi-plus" (onClick)="showCreateModal()"></p-button>
+    </div>
+    <div class="posts-wrap">
+      <div *ngIf="posts?.length" class="posts-cnt">
         <ng-container *ngFor="let post of posts">
           <p-card [header]="post.title" data-cy="post">
-            {{ post.body }}
+            <div class="post-content">{{ post.body }}</div>
+            <div class="post-actions flex">
+              <p-button
+                label="Edit"
+                icon="pi pi-pencil"
+                class="ml-auto"
+                styleClass="p-button-sm"
+                (onClick)="showEditModal(post)"
+              ></p-button>
+              <p-button
+                label="Delete"
+                icon="pi pi-save"
+                class="ml-2"
+                styleClass="p-button-sm p-button-danger"
+                (onClick)="deletePost(post)"
+              ></p-button>
+            </div>
           </p-card>
           <br />
         </ng-container>
+      </div>
 
-        <div class="pagination">
-          <p-paginator
-            data-cy="pagination"
-            [rows]="12"
-            [totalRecords]="120"
-            (onPageChange)="onPageChange($event)"
-          ></p-paginator>
-        </div>
+      <div *ngIf="!posts?.length" class="empty-page">There are no posts in the Page. Please refresh.</div>
+
+      <div class="pagination">
+        <p-paginator
+          data-cy="pagination"
+          [rows]="12"
+          [totalRecords]="120"
+          (onPageChange)="onPageChange($event)"
+        ></p-paginator>
       </div>
     </div>
   </main>
 </div>
+
+<p-dialog
+  header="Add Post"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+  [modal]="true"
+  [(visible)]="isShownCreateModal"
+>
+  <br />
+  <span class="p-float-label">
+    <input pInputText id="add-post-title" type="text" class="w-full" [(ngModel)]="createTitle" />
+    <label for="add-post-title">Title</label>
+  </span>
+  <br />
+  <br />
+  <span class="p-float-label">
+    <textarea pInputTextarea id="add-post-body" rows="5" cols="30" class="w-full" [(ngModel)]="createBody"></textarea>
+    <label for="add-post-body">Body</label>
+  </span>
+  <br />
+  <div class="buttons">
+    <p-button
+      label="Cancel"
+      icon="pi"
+      class="mr-auto"
+      styleClass="p-button-secondary"
+      (onClick)="hideCreateModal()"
+    ></p-button>
+    <p-button label="Add Post" icon="pi pi-save" class="ml-auto" (onClick)="createPost()"></p-button>
+  </div>
+</p-dialog>
+
+<p-dialog
+  header="Edit Post"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+  [modal]="true"
+  [(visible)]="isShownEditModal"
+>
+  <br />
+  <span class="p-float-label">
+    <input pInputText id="edit-post-title" type="text" class="w-full" [(ngModel)]="editTitle" />
+    <label for="edit-post-title">Title</label>
+  </span>
+  <br />
+  <br />
+  <span class="p-float-label">
+    <textarea pInputTextarea id="edit-post-body" rows="5" cols="30" class="w-full" [(ngModel)]="editBody"></textarea>
+    <label for="edit-post-body">Body</label>
+  </span>
+  <br />
+  <div class="buttons">
+    <p-button
+      label="Cancel"
+      icon="pi"
+      class="mr-auto"
+      styleClass="p-button-secondary"
+      (onClick)="hideEditModal()"
+    ></p-button>
+    <p-button label="Update Post" icon="pi pi-save" class="ml-auto" (onClick)="updatePost()"></p-button>
+  </div>
+</p-dialog>

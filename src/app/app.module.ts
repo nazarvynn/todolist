@@ -22,6 +22,8 @@ import { CardModule } from 'primeng/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutComponent } from './about/about.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DialogModule } from 'primeng/dialog';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 @NgModule({
   imports: [
@@ -41,6 +43,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     ToastModule,
     CardModule,
     InputTextareaModule,
+    DialogModule,
+    DynamicDialogModule,
   ],
   declarations: [AppComponent, WelcomeComponent, TodoComponent, PostsComponent, GalleryComponent, AboutComponent],
   providers: [],
