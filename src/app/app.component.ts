@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PrimeNGConfig } from 'primeng/api';
+import { MenuItem, PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,38 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  items!: MenuItem[];
+
   constructor(private primengConfig: PrimeNGConfig) {}
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+
+    this.items = [
+      {
+        label: 'Home',
+        icon: 'pi pi-fw pi-home',
+        routerLink: '/',
+        automationId: 'home-page',
+      },
+      {
+        label: 'Todo list',
+        icon: 'pi pi-fw pi-list',
+        routerLink: '/todo',
+        automationId: 'todo-page',
+      },
+      {
+        label: 'Posts',
+        icon: 'pi pi-fw pi-check-square',
+        routerLink: '/posts',
+        automationId: 'posts-page',
+      },
+      {
+        label: 'Gallery',
+        icon: 'pi pi-fw pi-image',
+        routerLink: '/gallery',
+        automationId: 'gallery-page',
+      },
+    ];
   }
 }
