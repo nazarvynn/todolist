@@ -12,7 +12,7 @@
     <p-button label="Inactive" styleClass="p-button-sm" data-cy="show-inactive-btn" (click)="showInactive()"></p-button>
   </div>
 
-  <section>
+  <div class="todo-list">
     <div *ngFor="let item of filteredList" class="field-checkbox" data-cy="todo-item">
       <p-checkbox inputId="binary" [binary]="true" (onChange)="done()" [(ngModel)]="item.done"></p-checkbox>
 
@@ -60,5 +60,5 @@
         (click)="delete(item)"
       ></p-button>
     </div>
-  </section>
+  </div>
 </div>
