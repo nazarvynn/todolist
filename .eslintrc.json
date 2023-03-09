@@ -15,11 +15,11 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "@angular-eslint/directive-selector": ["error", { "type": "attribute", "prefix": "app", "style": "camelCase" }],
+        "@angular-eslint/component-selector": ["error", { "type": "element", "prefix": "app", "style": "kebab-case" }],
         "@typescript-eslint/no-unused-vars": "error",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-explicit-any": "off",
-        "@angular-eslint/directive-selector": ["error", { "type": "attribute", "prefix": "app", "style": "camelCase" }],
-        "@angular-eslint/component-selector": ["error", { "type": "element", "prefix": "app", "style": "kebab-case" }],
         "no-var": "error",
         "semi": "error",
         "indent": ["error", 2, { "SwitchCase": 1 }],
