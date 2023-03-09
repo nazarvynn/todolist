@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { WelcomeComponent } from 'src/app/welcome/welcome.component';
-import { TodoComponent } from 'src/app/todo/todo.component';
-import { PostsComponent } from 'src/app/posts/posts.component';
-import { GalleryComponent } from 'src/app/gallery/gallery.component';
 import { AboutComponent } from 'src/app/about/about.component';
+import { GalleryComponent } from 'src/app/gallery/gallery.component';
 import { PostComponent } from 'src/app/post/post.component';
+import { PostsComponent } from 'src/app/posts/posts.component';
+import { TodoComponent } from 'src/app/todo/todo.component';
+import { WelcomeComponent } from 'src/app/welcome/welcome.component';
 
 const routes: Routes = [
   {

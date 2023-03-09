@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import last from 'lodash-es/last';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import last from 'lodash-es/last';
 
 interface Post {
   id: number;
